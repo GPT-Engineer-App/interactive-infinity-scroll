@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 
 const themes = [
@@ -29,19 +29,21 @@ const themes = [
 ];
 
 const ParallaxSection = () => {
-  const [currentTheme, setCurrentTheme] = React.useState(0);
-  const parallaxRef = useRef(null);
+  const [currentTheme, setCurrentTheme] = useState(0);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrolled = window.pageYOffset;
-      const layers = parallaxRef.current.children;
-      
-      Array.from(layers).forEach((layer, index) => {
-        const speed = (index + 1) * 0.5;
-        const yPos = -(scrolled * speed);
-        layer.style.transform = `translateY(${yPos}px)`;
-      });
+      const scrollPosition = window.pageYOffset;
+      const section = sectionRef.current;
+      if (section) {
+        const layers = section.querySelectorAll('.parallax-layer');
+        layers.forEach((layer, index) => {
+          const speed = (index + 1) * 0.2;
+          const yPos = -(scrollPosition * speed);
+          layer.style.transform = `translateY(${yPos}px)`;
+        });
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -53,24 +55,22 @@ const ParallaxSection = () => {
   };
 
   return (
-    <section className="relative h-screen overflow-hidden">
-      <div ref={parallaxRef} className="parallax absolute inset-0">
-        {themes[currentTheme].layers.map((layer, index) => (
-          <div
-            key={index}
-            className={`layer absolute inset-0 bg-cover bg-center transition-opacity duration-500`}
-            style={{
-              backgroundImage: `url(${layer})`,
-              zIndex: -index,
-            }}
-          />
-        ))}
-      </div>
+    <section ref={sectionRef} className="relative h-screen overflow-hidden">
+      {themes[currentTheme].layers.map((layer, index) => (
+        <div
+          key={index}
+          className="parallax-layer absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${layer})`,
+            zIndex: -index,
+          }}
+        />
+      ))}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-center text-white">
+        <div className="text-center text-white bg-black bg-opacity-50 p-8 rounded-lg">
           <h2 className="text-4xl font-bold mb-4">Parallax Scrolling</h2>
-          <p className="text-xl mb-8">Scroll to see the effect</p>
-          <Button onClick={changeTheme} variant="outline" size="lg">
+          <p className="text-xl mb-8">Experience the magic of depth and motion</p>
+          <Button onClick={changeTheme} variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-black transition-colors">
             Change Theme
           </Button>
         </div>
