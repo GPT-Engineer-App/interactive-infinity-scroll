@@ -42,19 +42,19 @@ const Index = () => {
     <div className="flex flex-col min-h-screen">
       <HeroSection />
       <ParallaxSection />
-      <div id="about" ref={(el) => (sectionsRef.current[0] = el)} className="transition-all duration-1000">
+      <div id="about" ref={(el) => (sectionsRef.current[0] = el)} data-aos="fade-up">
         <AboutSection />
       </div>
-      <div id="features" ref={(el) => (sectionsRef.current[1] = el)} className="transition-all duration-1000">
+      <div id="features" ref={(el) => (sectionsRef.current[1] = el)} data-aos="fade-up">
         <FeaturesSection />
       </div>
-      <div id="testimonials" ref={(el) => (sectionsRef.current[2] = el)} className="transition-all duration-1000">
+      <div id="testimonials" ref={(el) => (sectionsRef.current[2] = el)} data-aos="fade-up">
         <TestimonialsSection />
       </div>
-      <div id="gallery" ref={(el) => (sectionsRef.current[3] = el)} className="transition-all duration-1000">
+      <div id="gallery" ref={(el) => (sectionsRef.current[3] = el)} data-aos="fade-up">
         <GallerySection />
       </div>
-      <div id="contact" ref={(el) => (sectionsRef.current[4] = el)} className="transition-all duration-1000">
+      <div id="contact" ref={(el) => (sectionsRef.current[4] = el)} data-aos="fade-up">
         <ContactSection />
       </div>
     </div>
