@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform } from 'framer-motion';
 
@@ -41,8 +41,16 @@ const ParallaxSection = () => {
     setCurrentTheme((prev) => (prev + 1) % themes.length);
   };
 
+  useEffect(() => {
+    // Force a re-render when the theme changes
+    sectionRef.current.style.display = 'none';
+    setTimeout(() => {
+      sectionRef.current.style.display = 'block';
+    }, 0);
+  }, [currentTheme]);
+
   return (
-    <section ref={sectionRef} className="relative h-[600vh] overflow-hidden">
+    <section ref={sectionRef} className="relative h-[300vh] overflow-hidden">
       <div className="sticky top-0 h-screen flex">
         {[0.7, 1.5, 1.2].map((speed, index) => (
           <ParallaxColumn 
