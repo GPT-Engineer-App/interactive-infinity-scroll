@@ -85,10 +85,10 @@ const ParallaxColumn = ({ theme, scrollYProgress, speed, layerIndex }) => {
           y,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
-          height: '120%', // Increase height to allow for zooming effect
-          width: '120%', // Increase width to allow for zooming effect
-          left: '-10%', // Offset to center the zoomed image
-          top: '-10%', // Offset to center the zoomed image
+          height: '150%', // Increase height for better coverage
+          width: '150%', // Increase width for better coverage
+          left: '-25%', // Offset to center the zoomed image
+          top: '-25%', // Offset to center the zoomed image
         }}
       />
     </div>
