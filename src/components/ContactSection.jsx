@@ -20,7 +20,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-16 bg-white overflow-hidden">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4 max-w-md">
         <h2 className="text-3xl font-bold text-center mb-8">Contact Us</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
