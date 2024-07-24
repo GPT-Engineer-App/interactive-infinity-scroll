@@ -1,20 +1,31 @@
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
 
 const AboutSection = () => {
   return (
-    <section className="py-16 bg-gray-100 overflow-hidden">
+    <section id="about" className="py-16 bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-8 md:mb-0 transform transition-transform duration-500 hover:scale-105">
-            <img src="/placeholder.svg" alt="About us" className="rounded-lg shadow-lg" />
+        <div className="flex flex-col md:flex-row items-center gap-12">
+          <div className="md:w-1/2 mb-8 md:mb-0">
+            <Card className="overflow-hidden">
+              <img 
+                src="/placeholder.svg" 
+                alt="About us" 
+                className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
+              />
+            </Card>
           </div>
-          <div className="md:w-1/2 md:pl-12">
-            <h2 className="text-3xl font-bold mb-4">About Us</h2>
-            <p className="text-lg mb-6">
+          <div className="md:w-1/2">
+            <h2 className="text-4xl font-bold mb-6 text-gray-800">About Us</h2>
+            <p className="text-lg mb-6 text-gray-600 leading-relaxed">
               We are passionate about creating interactive and engaging web experiences. Our team of experts combines
-              creativity with cutting-edge technology to deliver stunning results.
+              creativity with cutting-edge technology to deliver stunning results that captivate and inspire.
             </p>
-            <Button size="lg">Learn More</Button>
+            <Button size="lg" className="group">
+              Learn More
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
           </div>
         </div>
       </div>
