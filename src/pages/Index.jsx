@@ -5,6 +5,7 @@ import FeaturesSection from '../components/FeaturesSection';
 import GallerySection from '../components/GallerySection';
 import ContactSection from '../components/ContactSection';
 import ParallaxSection from '../components/ParallaxSection';
+import TestimonialsSection from '../components/TestimonialsSection';
 
 const Index = () => {
   const sectionsRef = useRef([]);
@@ -47,10 +48,13 @@ const Index = () => {
       <div id="features" ref={(el) => (sectionsRef.current[1] = el)} className="transition-all duration-1000">
         <FeaturesSection />
       </div>
-      <div id="gallery" ref={(el) => (sectionsRef.current[2] = el)} className="transition-all duration-1000">
+      <div id="testimonials" ref={(el) => (sectionsRef.current[2] = el)} className="transition-all duration-1000">
+        <TestimonialsSection />
+      </div>
+      <div id="gallery" ref={(el) => (sectionsRef.current[3] = el)} className="transition-all duration-1000">
         <GallerySection />
       </div>
-      <div id="contact" ref={(el) => (sectionsRef.current[3] = el)} className="transition-all duration-1000">
+      <div id="contact" ref={(el) => (sectionsRef.current[4] = el)} className="transition-all duration-1000">
         <ContactSection />
       </div>
     </div>
