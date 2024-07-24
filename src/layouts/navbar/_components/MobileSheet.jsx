@@ -27,6 +27,7 @@ export const MobileSheet = ({ navItems }) => (
         ))}
         <NavItem to="#about">About</NavItem>
         <NavItem to="#features">Features</NavItem>
+        <NavItem to="#testimonials">Testimonials</NavItem>
         <NavItem to="#gallery">Gallery</NavItem>
         <NavItem to="#contact">Contact</NavItem>
       </nav>
