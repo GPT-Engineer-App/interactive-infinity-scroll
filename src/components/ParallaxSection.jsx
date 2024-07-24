@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -31,18 +31,14 @@ const themes = [
 
 const ParallaxSection = () => {
   const [currentTheme, setCurrentTheme] = useState(0);
-  const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  });
+  const { scrollYProgress } = useScroll();
 
   const changeTheme = () => {
     setCurrentTheme((prev) => (prev + 1) % themes.length);
   };
 
   return (
-    <section ref={sectionRef} className="relative h-screen overflow-hidden">
+    <section className="relative h-screen overflow-hidden">
       {themes[currentTheme].layers.map((layer, index) => {
         const yPos = useTransform(scrollYProgress, [0, 1], [0, index * 100]);
         return (
