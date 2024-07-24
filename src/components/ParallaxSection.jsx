@@ -50,7 +50,7 @@ const ParallaxSection = () => {
   }, [currentTheme]);
 
   return (
-    <section ref={sectionRef} className="relative h-screen overflow-hidden">
+    <section ref={sectionRef} className="relative h-[200vh] overflow-hidden">
       <div className="sticky top-0 h-screen flex">
         {[0.7, 1.5, 1.2].map((speed, index) => (
           <ParallaxColumn 
@@ -83,6 +83,8 @@ const ParallaxColumn = ({ theme, scrollYProgress, speed, layerIndex }) => {
         style={{
           backgroundImage: `url(${theme.layers[layerIndex]})`,
           y,
+          backgroundSize: '100% auto',
+          backgroundRepeat: 'repeat-y',
         }}
       />
     </div>
