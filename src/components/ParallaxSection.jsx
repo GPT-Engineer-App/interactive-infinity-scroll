@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform } from 'framer-motion';
 
@@ -37,29 +37,24 @@ const ParallaxSection = () => {
     offset: ["start start", "end start"]
   });
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const middleY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const foregroundY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-
   const changeTheme = () => {
     setCurrentTheme((prev) => (prev + 1) % themes.length);
   };
 
   return (
-    <section ref={sectionRef} className="relative h-[200vh] overflow-hidden">
-      {themes[currentTheme].layers.map((layer, index) => (
-        <motion.div
-          key={index}
-          className="parallax-layer absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${layer})`,
-            y: index === 0 ? backgroundY : index === 1 ? middleY : foregroundY,
-            zIndex: -index,
-          }}
-        />
-      ))}
-      <div className="sticky top-0 h-screen flex items-center justify-center">
-        <div className="text-center text-white bg-black bg-opacity-50 p-8 rounded-lg">
+    <section ref={sectionRef} className="relative h-[300vh] overflow-hidden">
+      <div className="sticky top-0 h-screen flex">
+        {[0.3, 0.5, 0.7].map((speed, index) => (
+          <ParallaxColumn 
+            key={index} 
+            theme={themes[currentTheme]} 
+            scrollYProgress={scrollYProgress} 
+            speed={speed} 
+          />
+        ))}
+      </div>
+      <div className="sticky top-0 h-screen flex items-center justify-center pointer-events-none">
+        <div className="text-center text-white bg-black bg-opacity-50 p-8 rounded-lg pointer-events-auto">
           <h2 className="text-4xl font-bold mb-4">Parallax Scrolling</h2>
           <p className="text-xl mb-8">Experience the magic of depth and motion</p>
           <Button onClick={changeTheme} variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-black transition-colors">
@@ -67,27 +62,41 @@ const ParallaxSection = () => {
           </Button>
         </div>
       </div>
-      <DancerAnimation />
+      <DancerAnimation scrollYProgress={scrollYProgress} />
     </section>
   );
 };
 
-const DancerAnimation = () => {
-  const dancerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: dancerRef,
-    offset: ["start end", "end start"]
-  });
+const ParallaxColumn = ({ theme, scrollYProgress, speed }) => {
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", `${50 * speed}%`]);
+  const middleY = useTransform(scrollYProgress, [0, 1], ["0%", `${30 * speed}%`]);
+  const foregroundY = useTransform(scrollYProgress, [0, 1], ["0%", `${15 * speed}%`]);
 
-  const dancerY = useTransform(scrollYProgress, [0, 1], ["100vh", "-100vh"]);
-  const dancerX = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ["0vw", "50vw", "0vw", "-50vw", "0vw"]);
-  const dancerRotate = useTransform(scrollYProgress, [0, 1], [0, 1440]); // 4 full rotations
-  const dancerScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 2, 0.5]);
+  return (
+    <div className="w-1/3 h-full relative overflow-hidden">
+      {theme.layers.map((layer, index) => (
+        <motion.div
+          key={index}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${layer})`,
+            y: index === 0 ? backgroundY : index === 1 ? middleY : foregroundY,
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+const DancerAnimation = ({ scrollYProgress }) => {
+  const dancerY = useTransform(scrollYProgress, [0, 1], ["0vh", "200vh"]);
+  const dancerX = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ["0vw", "25vw", "50vw", "75vw", "90vw"]);
+  const dancerRotate = useTransform(scrollYProgress, [0, 1], [0, 720]);
+  const dancerScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1.5, 0.5]);
 
   return (
     <motion.div
-      ref={dancerRef}
-      className="fixed bottom-0 left-0 w-full h-full pointer-events-none"
+      className="fixed top-0 left-0 w-full h-full pointer-events-none"
       style={{
         y: dancerY,
         x: dancerX,
