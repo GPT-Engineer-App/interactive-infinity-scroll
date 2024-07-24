@@ -62,7 +62,7 @@ const ParallaxSection = () => {
           />
         ))}
       </div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white bg-black bg-opacity-50 p-8 rounded-lg">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white bg-black bg-opacity-50 p-8 rounded-lg z-10">
         <h2 className="text-4xl font-bold mb-4">Parallax Scrolling</h2>
         <p className="text-xl mb-8">Experience the magic of depth and motion</p>
         <Button onClick={changeTheme} variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-black transition-colors">
@@ -83,8 +83,10 @@ const ParallaxColumn = ({ theme, scrollYProgress, speed, layerIndex }) => {
         style={{
           backgroundImage: `url(${theme.layers[layerIndex]})`,
           y,
-          backgroundSize: '100% auto',
-          backgroundRepeat: 'repeat-y',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          height: `${100 + Math.abs(100 * speed)}%`,
+          top: speed > 0 ? 0 : `${Math.abs(100 * speed)}%`,
         }}
       />
     </div>
