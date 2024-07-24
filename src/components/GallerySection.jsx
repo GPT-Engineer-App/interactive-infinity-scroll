@@ -3,12 +3,12 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const images = [
-  { src: "/placeholder.svg", alt: "Gallery Image 1" },
-  { src: "/placeholder.svg", alt: "Gallery Image 2" },
-  { src: "/placeholder.svg", alt: "Gallery Image 3" },
-  { src: "/placeholder.svg", alt: "Gallery Image 4" },
-  { src: "/placeholder.svg", alt: "Gallery Image 5" },
-  { src: "/placeholder.svg", alt: "Gallery Image 6" },
+  { src: "/images/gallery-1.jpg", alt: "Modern smartphone with colorful user interface" },
+  { src: "/images/gallery-2.jpg", alt: "Smartwatch displaying fitness tracking app" },
+  { src: "/images/gallery-3.jpg", alt: "Laptop showing video conference in home office" },
+  { src: "/images/gallery-4.jpg", alt: "Person wearing virtual reality headset" },
+  { src: "/images/gallery-5.jpg", alt: "Smart home device in modern living room" },
+  { src: "/images/gallery-6.jpg", alt: "Electric car charging at futuristic station" },
 ];
 
 const GallerySection = () => {
