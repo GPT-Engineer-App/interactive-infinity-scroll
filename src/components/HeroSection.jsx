@@ -6,8 +6,8 @@ const HeroSection = ({ onScrollClick }) => {
     <div className="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
       <div className="absolute inset-0 w-full h-full">
         <img 
-          src="/placeholder.svg" 
-          alt="Hero background" 
+          src="/images/hero-background.jpg" 
+          alt="Modern cityscape at night with illuminated skyscrapers" 
           className="absolute inset-0 w-full h-full object-cover"
           style={{ transform: 'scale(1.1)' }}
         />

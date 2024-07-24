@@ -10,8 +10,8 @@ const AboutSection = () => {
           <div className="md:w-1/2 mb-8 md:mb-0">
             <Card className="overflow-hidden">
               <img 
-                src="/placeholder.svg" 
-                alt="About us" 
+                src="/images/about-us.jpg" 
+                alt="Diverse team collaborating in a modern office" 
                 className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
               />
             </Card>
