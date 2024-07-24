@@ -52,7 +52,7 @@ const ParallaxSection = () => {
   return (
     <section ref={sectionRef} className="relative h-[200vh] overflow-hidden">
       <div className="sticky top-0 h-screen flex">
-        {[0.7, 1.5, 1.2].map((speed, index) => (
+        {[0.7, 0.8, 0.9].map((speed, index) => (
           <ParallaxColumn 
             key={index} 
             theme={themes[currentTheme]} 
@@ -85,8 +85,10 @@ const ParallaxColumn = ({ theme, scrollYProgress, speed, layerIndex }) => {
           y,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
-          height: `${100 + Math.abs(100 * speed)}%`,
-          top: speed > 0 ? 0 : `${Math.abs(100 * speed)}%`,
+          height: '120%', // Increase height to allow for zooming effect
+          width: '120%', // Increase width to allow for zooming effect
+          left: '-10%', // Offset to center the zoomed image
+          top: '-10%', // Offset to center the zoomed image
         }}
       />
     </div>
