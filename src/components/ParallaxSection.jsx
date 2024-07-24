@@ -50,7 +50,7 @@ const ParallaxSection = () => {
   }, [currentTheme]);
 
   return (
-    <section ref={sectionRef} className="relative h-[300vh] overflow-hidden">
+    <section ref={sectionRef} className="relative h-screen overflow-hidden">
       <div className="sticky top-0 h-screen flex">
         {[0.7, 1.5, 1.2].map((speed, index) => (
           <ParallaxColumn 
@@ -62,14 +62,12 @@ const ParallaxSection = () => {
           />
         ))}
       </div>
-      <div className="sticky top-0 h-screen flex items-center justify-center pointer-events-none">
-        <div className="text-center text-white bg-black bg-opacity-50 p-8 rounded-lg pointer-events-auto">
-          <h2 className="text-4xl font-bold mb-4">Parallax Scrolling</h2>
-          <p className="text-xl mb-8">Experience the magic of depth and motion</p>
-          <Button onClick={changeTheme} variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-black transition-colors">
-            Change Theme
-          </Button>
-        </div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white bg-black bg-opacity-50 p-8 rounded-lg">
+        <h2 className="text-4xl font-bold mb-4">Parallax Scrolling</h2>
+        <p className="text-xl mb-8">Experience the magic of depth and motion</p>
+        <Button onClick={changeTheme} variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-black transition-colors">
+          Change Theme
+        </Button>
       </div>
     </section>
   );
