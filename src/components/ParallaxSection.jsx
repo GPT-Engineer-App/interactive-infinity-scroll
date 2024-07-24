@@ -50,6 +50,7 @@ const ParallaxSection = () => {
             theme={themes[currentTheme]} 
             scrollYProgress={scrollYProgress} 
             speed={speed} 
+            layerIndex={index}
           />
         ))}
       </div>
@@ -62,50 +63,23 @@ const ParallaxSection = () => {
           </Button>
         </div>
       </div>
-      <DancerAnimation scrollYProgress={scrollYProgress} />
     </section>
   );
 };
 
-const ParallaxColumn = ({ theme, scrollYProgress, speed }) => {
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", `${50 * speed}%`]);
-  const middleY = useTransform(scrollYProgress, [0, 1], ["0%", `${30 * speed}%`]);
-  const foregroundY = useTransform(scrollYProgress, [0, 1], ["0%", `${15 * speed}%`]);
+const ParallaxColumn = ({ theme, scrollYProgress, speed, layerIndex }) => {
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", `${50 * speed}%`]);
 
   return (
     <div className="w-1/3 h-full relative overflow-hidden">
-      {theme.layers.map((layer, index) => (
-        <motion.div
-          key={index}
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${layer})`,
-            y: index === 0 ? backgroundY : index === 1 ? middleY : foregroundY,
-          }}
-        />
-      ))}
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${theme.layers[layerIndex]})`,
+          y,
+        }}
+      />
     </div>
-  );
-};
-
-const DancerAnimation = ({ scrollYProgress }) => {
-  const dancerY = useTransform(scrollYProgress, [0, 1], ["0vh", "200vh"]);
-  const dancerX = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ["0vw", "25vw", "50vw", "75vw", "90vw"]);
-  const dancerRotate = useTransform(scrollYProgress, [0, 1], [0, 720]);
-  const dancerScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1.5, 0.5]);
-
-  return (
-    <motion.div
-      className="fixed top-0 left-0 w-full h-full pointer-events-none"
-      style={{
-        y: dancerY,
-        x: dancerX,
-        rotate: dancerRotate,
-        scale: dancerScale,
-      }}
-    >
-      <img src="/images/dancer-silhouette.png" alt="Dancer" className="w-32 h-32 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-    </motion.div>
   );
 };
 
