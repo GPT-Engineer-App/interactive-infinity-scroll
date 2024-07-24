@@ -80,15 +80,17 @@ const DancerAnimation = () => {
   });
 
   const dancerY = useTransform(scrollYProgress, [0, 1], ["100%", "-100%"]);
-  const dancerRotate = useTransform(scrollYProgress, [0, 1], [0, 720]);
+  const dancerX = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ["0%", "25%", "50%", "75%", "100%"]);
+  const dancerRotate = useTransform(scrollYProgress, [0, 1], [0, 1440]); // 4 full rotations
   const dancerScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1.5, 0.5]);
 
   return (
     <motion.div
       ref={dancerRef}
-      className="fixed bottom-0 left-1/2 transform -translate-x-1/2"
+      className="fixed bottom-0 left-0"
       style={{
         y: dancerY,
+        x: dancerX,
         rotate: dancerRotate,
         scale: dancerScale,
       }}
