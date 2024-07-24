@@ -2,10 +2,10 @@ import { Button } from "@/components/ui/button";
 
 const AboutSection = () => {
   return (
-    <section className="py-16 bg-gray-100">
+    <section className="py-16 bg-gray-100 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-8 md:mb-0">
+          <div className="md:w-1/2 mb-8 md:mb-0 transform transition-transform duration-500 hover:scale-105">
             <img src="/placeholder.svg" alt="About us" className="rounded-lg shadow-lg" />
           </div>
           <div className="md:w-1/2 md:pl-12">

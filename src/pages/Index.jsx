@@ -5,6 +5,7 @@ import FeaturesSection from '../components/FeaturesSection';
 import GallerySection from '../components/GallerySection';
 import ContactSection from '../components/ContactSection';
 import ParallaxSection from '../components/ParallaxSection';
+import ParallaxWrapper from '../components/ParallaxWrapper';
 
 const Index = () => {
   const aboutRef = useRef(null);
@@ -18,20 +19,24 @@ const Index = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <HeroSection onScrollClick={() => scrollToSection(aboutRef)} />
-      <ParallaxSection />
-      <div ref={aboutRef}>
+      <ParallaxWrapper speed={0.5}>
+        <HeroSection onScrollClick={() => scrollToSection(aboutRef)} />
+      </ParallaxWrapper>
+      <ParallaxWrapper speed={0.7}>
+        <ParallaxSection />
+      </ParallaxWrapper>
+      <ParallaxWrapper speed={0.3} ref={aboutRef}>
         <AboutSection />
-      </div>
-      <div ref={featuresRef}>
+      </ParallaxWrapper>
+      <ParallaxWrapper speed={0.6} ref={featuresRef}>
         <FeaturesSection />
-      </div>
-      <div ref={galleryRef}>
+      </ParallaxWrapper>
+      <ParallaxWrapper speed={0.4} ref={galleryRef}>
         <GallerySection />
-      </div>
-      <div ref={contactRef}>
+      </ParallaxWrapper>
+      <ParallaxWrapper speed={0.2} ref={contactRef}>
         <ContactSection />
-      </div>
+      </ParallaxWrapper>
     </div>
   );
 };

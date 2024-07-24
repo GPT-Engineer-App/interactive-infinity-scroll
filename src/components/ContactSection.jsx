@@ -20,7 +20,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-md">
         <h2 className="text-3xl font-bold text-center mb-8">Contact Us</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -28,6 +28,7 @@ const ContactSection = () => {
             <Input
               {...register("name", { required: "Name is required" })}
               placeholder="Your Name"
+              className="transition-all duration-300 focus:ring-2 focus:ring-primary"
             />
             {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
           </div>
@@ -41,6 +42,7 @@ const ContactSection = () => {
                 }
               })}
               placeholder="Your Email"
+              className="transition-all duration-300 focus:ring-2 focus:ring-primary"
             />
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
           </div>
@@ -49,10 +51,11 @@ const ContactSection = () => {
               {...register("message", { required: "Message is required" })}
               placeholder="Your Message"
               rows={4}
+              className="transition-all duration-300 focus:ring-2 focus:ring-primary"
             />
             {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
           </div>
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
+          <Button type="submit" className="w-full transition-all duration-300 hover:bg-primary-dark" disabled={isSubmitting}>
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
         </form>

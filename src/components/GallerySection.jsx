@@ -14,7 +14,7 @@ const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <section className="py-16 bg-gray-100">
+    <section className="py-16 bg-gray-100 overflow-hidden">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">Our Gallery</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -24,7 +24,7 @@ const GallerySection = () => {
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-64 object-cover rounded-lg cursor-pointer transition-all duration-300 hover:opacity-80"
+                  className="w-full h-64 object-cover rounded-lg cursor-pointer transition-all duration-300 hover:opacity-80 transform hover:scale-105"
                   onClick={() => setSelectedImage(image)}
                 />
               </DialogTrigger>
