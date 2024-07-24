@@ -42,9 +42,9 @@ const ParallaxSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative h-[300vh] overflow-hidden">
+    <section ref={sectionRef} className="relative h-[600vh] overflow-hidden">
       <div className="sticky top-0 h-screen flex">
-        {[0.3, 0.5, 0.7].map((speed, index) => (
+        {[0.7, 1.5, 1.2].map((speed, index) => (
           <ParallaxColumn 
             key={index} 
             theme={themes[currentTheme]} 
@@ -68,7 +68,7 @@ const ParallaxSection = () => {
 };
 
 const ParallaxColumn = ({ theme, scrollYProgress, speed, layerIndex }) => {
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", `${50 * speed}%`]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", `${100 * speed}%`]);
 
   return (
     <div className="w-1/3 h-full relative overflow-hidden">
