@@ -1,0 +1,12 @@
+version: 1
+repository: davlindh/interactive-infinity-scroll
+purpose: Interaction and infinite-scroll content exploration experiment.
+status: experimental-reference
+canonical_parent: null
+capabilities: [interaction, content-navigation, progressive-loading]
+vertical: interface-research
+omniframez_role: interaction-experiment
+evidence: {confidence: inferred, sources: [repository-name]}
+harvest_action: inspect-and-harvest-unique-capabilities
+relations:
+  - contributes_to: contextual navigation interaction patterns
